@@ -1,4 +1,4 @@
-package backr
+package goback
 
 import (
 	"bytes"
@@ -163,7 +163,7 @@ func readUsing(chunkSpec []byte, b []byte, r *Reader) error {
 }
 
 func TestReadFile(t *testing.T) {
-	f, err := ioutil.TempFile(".", "backr_test_file.bin")
+	f, err := ioutil.TempFile(".", "goback_test_file.bin")
 	if err != nil {
 		t.Errorf("Unexpected error %v", err)
 	}

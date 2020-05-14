@@ -1,4 +1,4 @@
-// Package backr implements buffered reader in backward order.
+// Package goback implements buffered reader in backward order.
 // Chunks are read from left to right but moving offset from right to left.
 // Backward reader may be useful for reading size endian records in an append only file,
 // specially when dangling links are included in records.
@@ -9,34 +9,35 @@
 //
 // import (
 //   "os"
-//	 "github.com/jeroiraz/backr"
+//	 "github.com/jeroiraz/goback"
 // )
 //
 // func main() {
 //	 f, _ := os.Open("file")
 //	 defer f.Close()
 //
-//	 reader, _ := backr.NewFileReader(f)
+//	 reader, _ := goback.NewFileReader(f)
 //
+//   // Read last 32 bytes from input file
 //	 buf := make([]byte, 32)
 //	 reader.Read(buf)
 // }
 
-package backr
+package goback
 
 import (
 	"errors"
 	"io"
 	"os"
 
-	"github.com/jeroiraz/backr/backbuf"
+	"github.com/jeroiraz/goback/backbuf"
 )
 
 // ErrInvalidArguments, ErrNoContent, ErrInternal error list
 var (
-	ErrInvalidArguments = errors.New("backr: invalid arguments")
-	ErrNoContent        = errors.New("backr: no content to be read")
-	ErrInternal         = errors.New("backr: unexpected internal error")
+	ErrInvalidArguments = errors.New("goback: invalid arguments")
+	ErrNoContent        = errors.New("goback: no content to be read")
+	ErrInternal         = errors.New("goback: unexpected internal error")
 )
 
 const (

@@ -11,7 +11,7 @@ at the end.
 ### Installation
 
 ```go
-go get github.com/jeroiraz/backr
+go get github.com/jeroiraz/goback
 ```
 
 
@@ -22,15 +22,16 @@ package main
 
 import (
   "os"
-  "github.com/jeroiraz/backr"
+  "github.com/jeroiraz/goback"
 )
 
 func main() {
   f, _ := os.Open("file")
   defer f.Close()
 
-  reader, _ := backr.NewFileReader(f)
+  reader, _ := goback.NewFileReader(f)
 
+  // Read last 32 bytes from input file
   buf := make([]byte, 32)
   reader.Read(buf)
 }
